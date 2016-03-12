@@ -1,0 +1,37 @@
+import smbus
+from time import sleep
+
+bus = smbus.SMBus(1)
+
+# init LCD
+bus.write_byte_data(0x3e, 0x00, 0x38)
+bus.write_byte_data(0x3e, 0x00, 0x39)
+bus.write_byte_data(0x3e, 0x00, 0x14)
+bus.write_byte_data(0x3e, 0x00, 0x70)
+bus.write_byte_data(0x3e, 0x00, 0x56)
+bus.write_byte_data(0x3e, 0x00, 0x6c)
+sleep(0.5)
+# clear LCD
+bus.write_byte_data(0x3e, 0x00, 0x38)
+bus.write_byte_data(0x3e, 0x00, 0x0d)
+bus.write_byte_data(0x3e, 0x00, 0x01)
+sleep(0.5)
+# disp RASPI
+bus.write_byte_data(0x3e, 0x40, ord('R'))
+bus.write_byte_data(0x3e, 0x40, ord('A'))
+bus.write_byte_data(0x3e, 0x40, ord('S'))
+bus.write_byte_data(0x3e, 0x40, ord('P'))
+bus.write_byte_data(0x3e, 0x40, ord('I'))
+sleep(0.5)
+# next Line
+bus.write_byte_data(0x3e, 0x00, 0xc0)
+sleep(0.5)
+# disp LCDtest
+bus.write_byte_data(0x3e, 0x40, ord('L'))
+bus.write_byte_data(0x3e, 0x40, ord('C'))
+bus.write_byte_data(0x3e, 0x40, ord('D'))
+bus.write_byte_data(0x3e, 0x40, ord('t'))
+bus.write_byte_data(0x3e, 0x40, ord('e'))
+bus.write_byte_data(0x3e, 0x40, ord('s'))
+bus.write_byte_data(0x3e, 0x40, ord('t'))
+sleep(0.5)
